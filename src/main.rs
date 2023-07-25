@@ -1,6 +1,9 @@
 // mod shadowing;
 // mod rebinding;
-mod borrow_checker;
+// mod borrow_checker;
+// mod errors;
+mod lifetimes;
+// mod strings;
 
 
 fn main() {
@@ -13,6 +16,10 @@ fn main() {
     // rebinding::stores_borrowed();
     // borrow_checker::test1();
     // borrow_checker::test2();
-    borrow_checker::test3();
+    // borrow_checker::test3();
+    // errors::test();
+    lifetimes::example_longest();
+    // strings::test();
+    // strings::mutate();
 }
 
