@@ -12,6 +12,7 @@
 // }
 
 pub fn example_longest() {
+    println!();
     let string1 = String::from("abcd");
     let string2 = "xyz";
 

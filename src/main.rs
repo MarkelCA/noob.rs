@@ -2,8 +2,9 @@
 // mod rebinding;
 // mod borrow_checker;
 // mod errors;
-mod lifetimes;
+// mod lifetimes;
 // mod strings;
+mod traits;
 
 
 fn main() {
@@ -18,8 +19,9 @@ fn main() {
     // borrow_checker::test2();
     // borrow_checker::test3();
     // errors::test();
-    lifetimes::example_longest();
+    // lifetimes::example_longest();
     // strings::test();
     // strings::mutate();
+    traits::example();
 }
 

@@ -8,6 +8,7 @@ pub fn test1() {
     let item = vec![1,2,3];
 
     print_out(&item);
+    print_out();
     print_out(&item);
 }
 
