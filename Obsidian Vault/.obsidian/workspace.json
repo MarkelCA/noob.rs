@@ -1,0 +1,157 @@
+{
+  "main": {
+    "id": "c5f4a469b90d0daf",
+    "type": "split",
+    "children": [
+      {
+        "id": "408be556e0c1ec6d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b62a62987d8c0f4c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "shadowing.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "89529c6323a860ba",
+    "type": "split",
+    "children": [
+      {
+        "id": "939225af8dfa86e3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "81079d028c799b5b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b1e2582fe1fa3ca4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0f953c4b7cb85ab8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "64ae737150279707",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6155d491c7fb3d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "68b5ec894e8085d6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "shadowing.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0035fe18e094ff1b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "shadowing.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1b1aa485c52416d9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1dde99ac9b509968",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "shadowing.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "b62a62987d8c0f4c",
+  "lastOpenFiles": [
+    "async/Tokio.md",
+    "shadowing.md",
+    "async/Rust Asynchronous model.md",
+    "Untitled.md",
+    "async"
+  ]
+}
