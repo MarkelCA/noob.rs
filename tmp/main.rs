@@ -9,16 +9,27 @@ impl Bob {
     }
 }
 
+fn func_1() {
+    let mut a = Bob::new();
+    let a1 = &mut a;
+    // let a2 = &a;
+    func_2(a1);
+    // func_3(a2);
+    println!("{:?}", a);
+}
+
+fn func_2(bob: &mut Bob) {
+    bob.numbers.push(66);
+    println!("{}", bob.numbers[0]);
+}
+
+fn func_3(bob: &Bob) {
+    println!("{}", bob.numbers[1]);
+}
+
 
 fn main() {
-    let x = 5;
-    let y = x;
-    println!("{}", x);
-
-
-    // let a = Bob::new();
-    // let b = a;
-    // println!("{:?}", a);
+    func_1();
 }
 //
 // fn main2() {
@@ -29,15 +40,4 @@ fn main() {
 //     println!("{:p}", &x);
 //     println!("{:p}", &y);
 // }
-/
 
-
-fn main() {
-    let a = 1;
-    let b = 2;
-    let b = 3;
-
-    println!("{}", a);
-    println!("{}", b);
-    println!("{}", b);
-}
