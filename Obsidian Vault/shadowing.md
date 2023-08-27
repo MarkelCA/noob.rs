@@ -1,5 +1,7 @@
 # Learnings
 
+[**Shadowing vs mutability**](https://stackoverflow.com/questions/53235334/in-rust-whats-the-difference-between-shadowing-and-mutability)
+
 ## Shadowing
 ### Temporal
 Rust:
