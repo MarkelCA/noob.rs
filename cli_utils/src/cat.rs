@@ -1,17 +1,15 @@
-use std::env::Args;
 use std::fs::File;
 use std::io::{self, prelude::*, BufReader};
 
-pub fn run(args: Args) -> io::Result<()> {
-    for arg in args.skip(1) {
-        cat(arg)?;
+pub fn run(args: impl Iterator<Item = String>) -> io::Result<()> {
+    for arg in args {
+        print_file(arg)?;
     }
 
     Ok(())
 }
 
-fn cat(filename: String) -> io::Result<()> {
-
+fn print_file(filename: String) -> io::Result<()> {
     let file = File::open(filename)?;
     let reader = BufReader::new(file);
 
