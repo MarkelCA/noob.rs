@@ -1,6 +1,5 @@
-workspace = { members = ["auth_service", "cli_utils"] }
 [package]
-name = "noob"
+name = "cli_utils"
 version = "0.1.0"
 edition = "2021"
 
