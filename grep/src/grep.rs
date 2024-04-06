@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Read};
 use std::fs;
 use std::path::PathBuf;
 
@@ -22,20 +22,31 @@ fn grep_dir(path: PathBuf, text: &str) {
         if p.is_dir() {
             grep_dir(p, text);
         } else {
-            grep_file(p.display().to_string(), text).unwrap();
+            let x = grep_file(p.display().to_string(), text);
+            x.unwrap()
         }
     }
 }
 
+
 fn grep_file(file_path: String, text: &str) -> std::io::Result<()> {
-    let file = File::open(file_path)?;
+    let file = File::open(&file_path)?;
     let reader = BufReader::new(file);
 
-    for line in reader.lines() {
-        let line = line?;
-        if line.contains(&text) {
-            println!("{}", line);
+    let bytes = reader.bytes();
+    for byte in bytes {
+        let byte = byte.unwrap();
+        if byte == text.as_bytes()[0] {
+            println!("{} -> {:?}", file_path, text);
         }
     }
+
+    // for line in reader.lines() {
+    //     println!("{} -> {:?}",file_path, line);
+    //     let line = line?;
+    //     if line.contains(&text) {
+    //         println!("{}", line);
+    //     }
+    // }
     Ok(())
 }

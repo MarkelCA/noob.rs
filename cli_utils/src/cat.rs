@@ -10,11 +10,13 @@ pub fn run(args: impl Iterator<Item = String>) -> io::Result<()> {
 }
 
 fn print_file(filename: String) -> io::Result<()> {
-    let file = File::open(filename)?;
-    let reader = BufReader::new(file);
+    let bytes = std::fs::read(filename).unwrap();
+    
+    for bytes in bytes.chunks(50) {
+        print!("{}", String::from_utf8_lossy(bytes));
 
-    for line in reader.lines() {
-        println!("{}", line?);
+        // let char = byte as char;
+        // print!("{}", char);
     }
 
     Ok(())
