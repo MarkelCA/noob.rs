@@ -1,4 +1,4 @@
-workspace = { members = ["auth_service", "cat", "cli_utils", "grep"] }
+workspace = { members = ["auth_service", "cat", "cli_utils", "grep", "tmp"] }
 [package]
 name = "noob"
 version = "0.1.0"
