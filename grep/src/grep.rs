@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{BufReader, Read};
+use std::io::{BufRead, BufReader, Read};
 use std::io::Write;
 use std::fs;
 use std::path::PathBuf;
@@ -23,15 +23,9 @@ fn grep_dir(path: PathBuf, text: &str) {
         if p.is_dir() {
             grep_dir(p, text);
         } else {
-
-            match grep_file(p.display().to_string(), text) {
-                Ok(_) => {
-
-                },
-                Err(err) => {
-                    eprintln!("Error reading file {} ({err})", p.display())
-                }
-            }
+            grep_file(p.display().to_string(), text).unwrap_or_else(|err| {
+                eprintln!("Error reading file {} ({err})", p.display())
+            });
         }
     }
 }
@@ -67,22 +61,23 @@ fn grep_file(file_path: String, text: &str) -> std::io::Result<()> {
              }
          }
     }
-    // let bytes = reader.bytes();
-    // for byte in bytes {
-    //     let byte = byte.unwrap();
-    //     if byte == text.as_bytes()[0] {
-    //         println!("{} ", byte);
-    //         // println!("{} -> {:?}", path.display(), text);
-    //     }
-    // }
+    Ok(())
+}
 
-    // for line in reader.lines() {
-    //     println!("{} -> {:?}",file_path, line);
-    //     let line = line?;
-    //     if line.contains(&text) {
-    //         println!("{}", line);
-    //     }
-    // }
+/**
+ * Alternative implementation for grep_file.
+ * Only works for text files (breaks with non UTF-8 characters)
+ */
+fn _grep_text_file(file_path: String, text: &str) -> std::io::Result<()> {
+    let file = File::open(file_path)?;
+    let reader = BufReader::new(file);
+
+     for line in reader.lines() {
+         let line = line?;
+         if line.contains(&text) {
+             println!("{}", line);
+         }
+     }
     Ok(())
 }
 
