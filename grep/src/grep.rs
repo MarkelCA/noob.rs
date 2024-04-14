@@ -1,6 +1,5 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader, Read};
-use std::io::Write;
 use std::fs;
 use std::path::PathBuf;
 
@@ -34,33 +33,23 @@ fn grep_dir(path: PathBuf, text: &str) {
 const BUFFER_CAPACITY: usize = 1024 * 64;
 fn grep_file(file_path: String, text: &str) -> std::io::Result<()> {
     let path = PathBuf::from(file_path);
-
     let file = File::open(&path)?;
+    let reader = BufReader::with_capacity(BUFFER_CAPACITY, file);
 
-    // let f = File::open(filename)?;
-    let mut reader = BufReader::with_capacity(BUFFER_CAPACITY, file);
-    let mut buffer = [0; BUFFER_CAPACITY];
-    let mut stdout = std::io::stdout();
-    // let stderr = std::io::stderr();
-
-    loop {
-         match reader.read(&mut buffer) {
-             Ok(n) => {
-                 if n > 0 {
-                     let b = text.as_bytes();
-                     if find_subsequence(&buffer[0..n], b).is_some() {
-                         stdout.write(&buffer[0..n])?;
-                     }
-                     // stdout.write(&buffer[0..n])?;
-                 } else {
-                     break;
-                 }
-             },
-             Err(err) => {
-                 // _ = stderr.write(err.to_string().as_bytes());
-             }
-         }
+    let mut line = String::new();
+    for byte in reader.bytes() {
+        let b = byte?;
+        if b == b'\n' {
+            if line.contains(text) {
+                println!("{}",line);
+                return Ok(());
+            }
+            line.clear();
+        } else {
+            line.push(char::from(b))
+        }
     }
+
     Ok(())
 }
 
@@ -79,8 +68,4 @@ fn _grep_text_file(file_path: String, text: &str) -> std::io::Result<()> {
          }
      }
     Ok(())
-}
-
-fn find_subsequence(haystack: &[u8], needle: &[u8]) -> Option<usize> {
-    haystack.windows(needle.len()).position(|window| window == needle)
 }
