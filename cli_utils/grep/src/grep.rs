@@ -2,14 +2,15 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Read};
 use std::fs;
 use std::path::PathBuf;
+use crate::Args;
 
-pub fn run(text: String, file_path: String, recursive: bool) -> std::io::Result<()> {
+pub fn run(args: Args) -> std::io::Result<()> {
 
-    if !recursive {
-        grep_file(file_path, &text)?;
+    if !args.recursive {
+        grep_file(args.file_path, &args.text)?;
     } else {
-        let path = PathBuf::from(file_path);
-        grep_dir(path, &text);
+        let path = PathBuf::from(args.file_path);
+        grep_dir(path, &args.text);
     }
 
     Ok(())
@@ -30,11 +31,10 @@ fn grep_dir(path: PathBuf, text: &str) {
 }
 
 
-const BUFFER_CAPACITY: usize = 1024 * 64;
 fn grep_file(file_path: String, text: &str) -> std::io::Result<()> {
     let path = PathBuf::from(file_path);
     let file = File::open(&path)?;
-    let reader = BufReader::with_capacity(BUFFER_CAPACITY, file);
+    let reader = BufReader::new(file);
 
     let mut line = String::new();
     for byte in reader.bytes() {

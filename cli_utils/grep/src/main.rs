@@ -13,6 +13,5 @@ struct Args {
 
 fn main() -> std::io::Result<()> {
     let args = Args::parse();
-
-    grep::run(args.text, args.file_path, args.recursive)
+    grep::run(args)
 }
